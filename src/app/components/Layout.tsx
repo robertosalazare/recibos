@@ -7,18 +7,10 @@ import {
   useAuth,
   UserButton,
 } from "@clerk/nextjs";
-import { usePathname, redirect } from "next/navigation";
-import { PropsWithChildren, useEffect } from "react";
+import { PropsWithChildren } from "react";
 
 export const Layout = ({ children }: PropsWithChildren) => {
   const { isLoaded, isSignedIn } = useAuth();
-  const pathname = usePathname();
-
-  useEffect(() => {
-    if (isLoaded && !isSignedIn && !pathname.includes("/login")) {
-      redirect("/login");
-    }
-  }, [isLoaded, isSignedIn, pathname]);
 
   if (!isLoaded) return null;
   if (!isSignedIn) return <>{children}</>;

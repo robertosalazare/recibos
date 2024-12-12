@@ -8,7 +8,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        elements: {
+          footer: "hidden",
+          header: "hidden",
+        },
+      }}
+    >
       <html lang="en" suppressHydrationWarning={true}>
         <body>
           <Layout>{children}</Layout>
