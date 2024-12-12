@@ -1,13 +1,10 @@
 "use client";
 
 import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
   useAuth,
-  UserButton,
 } from "@clerk/nextjs";
 import { PropsWithChildren } from "react";
+import { Header } from "./Header";
 
 export const Layout = ({ children }: PropsWithChildren) => {
   const { isLoaded, isSignedIn } = useAuth();
@@ -17,12 +14,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
+      <Header />
       {children}
     </>
   );
